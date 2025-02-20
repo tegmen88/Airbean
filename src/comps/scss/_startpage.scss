@@ -1,0 +1,9 @@
+.startpage {
+  background-color: #38846d; /* Eller vilken färg du vill */
+  height: 100vh; /* Full höjd på skärmen */
+  display: flex;
+  flex-direction: column; /* Vända flex-elementen i vertikal riktning */
+  align-items: center;
+  justify-content: center;
+  color: white; /* Vit text för att synas på grön bakgrund */
+}

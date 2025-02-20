@@ -1,16 +1,15 @@
 
+import './scss/_startpage.scss';
 
 function Startpage() {
 
     return (
         <>
             <div className="startpage">
-
-                    <h1>Welcome to Startpage</h1>
-
+                <div>loggo</div>
+                <h1>Air Bean</h1>
+                <h3>DRONEDELIVIERED COFFE</h3>
             </div>
-            <p>start</p>
-
         </>
     )
 }
