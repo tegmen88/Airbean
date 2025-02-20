@@ -1,9 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&family=Rufina:wght@400;700&display=swap');
+
 .startpage {
-  background-color: #38846d; /* Eller vilken färg du vill */
-  height: 100vh; /* Full höjd på skärmen */
+  background-color: #38846d;
+  height: 100vh;
   display: flex;
-  flex-direction: column; /* Vända flex-elementen i vertikal riktning */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white; /* Vit text för att synas på grön bakgrund */
+  color: white;
+}
+
+.startpage h1 {
+  font-family: 'Rufina', serif;
+  font-size: 4.5em;
+  font-weight: 00;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.startpage h3 {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin: 5px 0;
+  padding: 0;
+  letter-spacing: 0.4em;
+
 }
