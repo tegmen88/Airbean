@@ -1,0 +1,25 @@
+.container {
+  padding: 0 3rem;
+}
+
+.container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.text-section {
+  margin-bottom: 1rem;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column; /* Lägger elementen i en vertikal stapel */
+  align-items: center; /* Centrerar dem horisontellt */
+  justify-content: center; /* Centrerar dem vertikalt (om det behövs) */
+  text-align: center; /* Centrerar text inom elementen */
+  margin: 2rem 0; /* Luft ovanför och nedanför gruppen */
+}
+
+.avatar {
+  margin: 0.5rem 0; /* Luft mellan elementen */
+}

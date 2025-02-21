@@ -1,12 +1,15 @@
 
-import '../App.css'
+
+
 
 function Cart() {
+
+
 
     return (
         <>
 
-            <h1>Shopping Cart</h1>
+            <p>cart</p>
 
         </>
     )
