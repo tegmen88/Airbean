@@ -1,5 +1,5 @@
 
-import './scss/_startpage.scss';
+import '../scss/_startpage.scss';
 
 function Startpage() {
 
