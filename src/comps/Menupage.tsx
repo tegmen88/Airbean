@@ -2,12 +2,16 @@ import "../scss/_menupage.scss";
 
 function Menupage() {
   const menuItems = [
-    { name: "Bryggkaffe", price: "49 kr" },
-    { name: "Caffe Doppio", price: "49 kr" },
-    { name: "Cappuccino", price: "49 kr" },
-    { name: "Latte Macchiato", price: "49 kr" },
-    { name: "Kaffe Latte", price: "49 kr" },
-    { name: "Cortado", price: "39 kr" },
+    { name: "Bryggkaffe", price: "49 kr", text: "Bryggd på månadens bönor" },
+    { name: "Caffe Doppio", price: "49 kr", text: "Bryggd på månadens bönor" },
+    { name: "Cappuccino", price: "49 kr", text: "Bryggd på månadens bönor" },
+    {
+      name: "Latte Macchiato",
+      price: "49 kr",
+      text: "Bryggd på månadens bönor",
+    },
+    { name: "Kaffe Latte", price: "49 kr", text: "Bryggd på månadens bönor" },
+    { name: "Cortado", price: "39 kr", text: "Bryggd på månadens bönor" },
   ];
 
   return (
@@ -21,7 +25,10 @@ function Menupage() {
             <li key={index} className="menu-item">
               <span className="menu-item-name">
                 <button className="menu-add-btn">+</button>
-                {item.name}
+                {item.name + " "}
+                {item.price}
+                <br />
+                {item.text}
               </span>
             </li>
           ))}
