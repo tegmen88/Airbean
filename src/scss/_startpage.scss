@@ -8,7 +8,6 @@ a.link {
   text-decoration: none !important;
 }
 
-
 .startpage {
   background-color: #38846d;
   height: 100vh;
@@ -17,7 +16,26 @@ a.link {
   align-items: center;
   justify-content: center;
   color: white;
+  position: relative; /* Behövs för absolut positionering */
+
+  /* Header-bild vänster och höger */
+  .header {
+    position: absolute;
+    width: 150px; /* Justera storlek på bilder */
+    height: auto;
+
+    &.left {
+      top: 0; /* Placeras högt upp */
+      left: 0; /* Placeras vid vänsterkanten */
+    }
+
+    &.right {
+      top: 0; /* Placeras högt upp */
+      right: 0; /* Placeras vid högerkanten */
+    }
+  }
 }
+
 
 .startpage h1 {
   font-family: 'Rufina', serif;
@@ -34,5 +52,4 @@ a.link {
   margin: 5px 0;
   padding: 0;
   letter-spacing: 0.4em;
-
 }

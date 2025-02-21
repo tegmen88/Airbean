@@ -1,0 +1,18 @@
+.menuheader {
+  width: 100%; /* Gör så att bilderna täcker hela bredden */
+  display: block; /* Tar bort extra mellanrum som kan skapas av inline-bilder */
+}
+
+.up {
+  margin-bottom: 10px; /* Valfritt: Lägger till utrymme nedanför den översta bilden */
+}
+
+.down {
+  margin-top: 10px; /* Valfritt: Lägger till utrymme ovanför den nedersta bilden */
+}
+
+body {
+  background-color: #f3e4e1; /* Bakgrundsfärg som täcker hela sidan */
+  margin: 0; /* Tar bort standardmarginalen för att undvika kantproblem */
+  padding: 0;
+}

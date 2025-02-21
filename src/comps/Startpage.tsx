@@ -8,7 +8,7 @@ function Startpage() {
         <>
             <div className="startpage">
 
-                <img src="/flower.svg" alt="Flower" className="flower left" />
+                <img src="/headerleft.svg" alt="Flower" className="header left" />
 
                 <img src="/loggo.svg" alt="Air Bean logo" className="logo" />
                 <Link to="/menu" className="link">
@@ -18,7 +18,7 @@ function Startpage() {
                     <h3 >DRONEDELIVIERED COFFE</h3>
                 </Link>
 
-                <img src="/loggo.svg" alt="Flower" className="flower right" />
+                <img src="/headerright.svg" alt="Flower" className="header right" />
 
             </div>
         </>
