@@ -1,13 +1,14 @@
-/* Hamburgarikonen */
 .menu-icon {
+  position: fixed;
   font-size: 30px;
   cursor: pointer;
-  color: #333;
+  color: rgb(0, 0, 0); /* Gör ikonen vit */
   padding: 10px;
-// position: fixed;
   top: 15px;
-  left: 15px; /* Flytta ikonen till vänstra hörnet */
-  z-index: 1100; /* Ovanpå allt annat */
+  left: 15px;
+  z-index: 1100; /* Ovanpå allt */
+  background-color: #38846d; /* Samma färg som resten av navbaren */
+  border-radius: 5px;
 }
 
 /* Overlay som täcker hela skärmen */
@@ -15,55 +16,46 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%; /* Täcker hela bredden */
-  height: 100%; /* Täcker hela höjden */
-  background-color: rgba(0, 0, 0, 0.6); /* Halvtransparent svart bakgrund */
-  z-index: 1000; /* Över allt innehåll */
-  display: flex; /* Flexbox för enkel placering */
-  justify-content: center; /* Horisontell centrering */
-  align-items: center; /* Vertikal centrering */
+  width: 100%;
+  height: 100%;
+  background-color: #38846d; /* Hela navbaren och overlay är grön */
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Navigationens meny */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+  font-family: "PT Serif", serif;
+}
+
 .navbar__menu {
   list-style: none;
 }
-.navbar {
-  display: flex;
-  flex-direction: column; /* Vertikalt organisera länkarna */
-  gap: 30px; /* Avstånd mellan länkar */
-  text-align: center; /* Centrera länkarna */
-  font-family: "PT Serif", serif; /* Använd PT Serif-typsnittet */
-}
 
-/* Navigationslänkar */
+
 .navbar__item a {
-  text-decoration: none; /* Ta bort standard-understrykning */
-  color: #fff; /* Vit text */
-  font-size: 24px; /* Gör texten större */
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
   font-weight: bold;
-  transition: color 0.3s ease; /* Effekt vid hover */
-
-  /* Centrera texten */
+  transition: color 0.3s ease;
   display: block;
   text-align: center;
 }
 
-/* Kort linje mellan länkar */
-.navbar__item {
-  position: relative; /* Behövs för att placera linjen korrekt */
-
-  &::after {
-    content: ""; /* Tom linje */
-    display: block;
-    width: 40px; /* Gör linjen kort */
-    height: 4px; /* Tjocklek på linjen */
-    background: grey; /* Vit färg på linjen */
-    margin: 10px auto 0 auto; /* Placera linjen under länken */
-  }
-}
-
-/* Hover-effekt för länkar */
 .navbar__item a:hover {
-  color: #007bff; /* Ljusblå färg vid hover */
+  color: #007bff; 
 }
+
+body {
+  padding-top: 70px; 
+  background-color: #38846d; 
+}
+
+

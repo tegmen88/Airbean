@@ -1,12 +1,11 @@
 
-import {Link} from "react-router-dom";
-import {useState} from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import '../scss/_navbar.scss';
 
 function Navbar() {
-
     const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -15,10 +14,12 @@ function Navbar() {
 
     return (
         <>
+            {/* Navigationsikon (hamburgare) */}
             <div className="menu-icon" onClick={toggleMenu}>
                 {!menuOpen ? <MenuIcon /> : <CloseIcon />}
             </div>
 
+            {/* Meny-overlay när den är öppen */}
             {menuOpen && (
                 <div className="overlay" onClick={toggleMenu}>
                     <nav className="navbar">
@@ -38,10 +39,9 @@ function Navbar() {
                         </ul>
                     </nav>
                 </div>
-
             )}
         </>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;
