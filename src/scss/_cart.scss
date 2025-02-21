@@ -1,0 +1,36 @@
+
+
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Svart med transparens */
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end; /* Placera innehållet mot höger */
+  align-items: flex-start; /* Justera från toppen */
+}
+
+.cart {
+  background-color: white; /* Lägg till en bakgrundsfärg */
+  width: 300px; /* Sätt en bredd på varukorgen */
+  height: 100%; /* Få den att sträcka sig över hela höjden */
+  padding: 20px; /* Lägg till lite innermarginal */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Lägg till en skugga för att ge kontrast */
+  overflow-y: auto; /* Gör innehållet scrollbart om det blir för långt */
+}
+
+.cart-icon {
+  position: fixed; /* Placera den i en fast position liknande menu-icon */
+  font-size: 30px; /* Samma storlek som menu-icon */
+  cursor: pointer; /* Klickbar */
+  padding: 10px; /* Marginal runt */
+  top: 15px; /* Placera längst upp med samma avstånd som menu-icon */
+  right: 15px; /* Placera längst till höger */
+  z-index: 1100; /* Samma lager som menu-icon så det visas ovanpå allt */
+  background-color: black; /* Samma bakgrundsfärg som navbaren */
+  border-radius: 5px; /* Rundade kanter */
+  color: white; /* Text-/ikonfärg */
+}

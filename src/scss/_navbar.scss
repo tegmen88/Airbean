@@ -11,7 +11,7 @@
 }
 
 /* Overlay som täcker hela skärmen */
-.overlay {
+.menu-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -23,6 +23,20 @@
   justify-content: center;
   align-items: center;
 }
+
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Svart med transparens */
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /* Navigationens meny */
 .navbar {
@@ -41,23 +55,20 @@
 .navbar__item a {
   text-decoration: none;
   color: white;
-  font-family: 'PT Serif', serif; /* Ändra till PT Serif */
+  font-family: 'PT Serif', serif;
   font-size: 24px;
+  font-weight: 500;
   transition: color 0.3s ease, border-bottom-color 0.3s ease;
-  display: block;
   text-align: center;
-  padding: 10px 0; /* Ger luft runt texten */
+  padding: 20px 0;
   border-bottom: 1px solid white; /* Skapar en linje mellan länkarna */
   display: inline-block; /* Gör så linjerna fungerar som block under texten */
-
   position: relative; /* Behövs för pseudo-elementet */
-
 }
 
 .navbar__item a:hover {
-  color: white;
+  color: #38846d;
   border-bottom-color: grey;
-
 }
 
 body {
@@ -78,5 +89,12 @@ body {
   color: white; /* Text-/ikonfärg */
 }
 
-
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+  font-family: "PT Serif", serif;
+  background-color: white;
+}
 

@@ -12,10 +12,12 @@ function Navbar() {
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+        console.log("menu Klick!", !menuOpen);
     };
 
     const toggleCart = () => {
         setCartOpen(!cartOpen);
+        console.log("cart Klick!", !cartOpen);
     };
 
     return (
@@ -27,7 +29,7 @@ function Navbar() {
 
             {/* Meny-overlay när den är öppen */}
             {menuOpen && (
-                <div className="overlay" onClick={toggleMenu}>
+                <div className="menu-overlay" onClick={toggleMenu}>
                     <nav className="navbar">
                         <ul className="navbar__menu">
                             <li className="navbar__item">
@@ -51,6 +53,25 @@ function Navbar() {
             <div className="cart-icon" onClick={toggleCart}>
                 {!cartOpen ? <ShoppingCartIcon/> : <CloseIcon />}
             </div>
+
+            {/* Varukorgen-overlay när den är öppen */}
+            {cartOpen && (
+                <div className="cart-overlay" onClick={toggleCart}>
+                    <div className='cart'>
+                        <h2>Varukorg</h2>
+                        <ul>
+                            {/* Här visas varukorgens innehåll */}
+                            <li>Produkt 1</li>
+                            <li>Produkt 2</li>
+                            <li>Produkt 3</li>
+                        </ul>
+                        <p>Totalt: $123</p>
+                        <p>inkl moms + drönarleverens</p>
+
+                        <button>Take my money</button>
+                    </div>
+                </div>
+            )}
         </>
     );
 }
