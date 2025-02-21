@@ -1,22 +1,40 @@
-
-import '../scss/_menupage.scss';
-
+import "../scss/_menupage.scss";
 
 function Menupage() {
+  const menuItems = [
+    { name: "Bryggkaffe", price: "49 kr" },
+    { name: "Caffe Doppio", price: "49 kr" },
+    { name: "Cappuccino", price: "49 kr" },
+    { name: "Latte Macchiato", price: "49 kr" },
+    { name: "Kaffe Latte", price: "49 kr" },
+    { name: "Cortado", price: "39 kr" },
+  ];
 
-    return (
-        <>
-            <img src="/menuheaderup.png" alt="Flower" className="menuheader up" />
+  return (
+    <>
+      <div className="menu-page">
+        <img src="/menuheaderup.png" alt="Flower" className="menuheader up" />
 
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
+        <h1>Meny</h1>
+        <ul className="menu-list">
+          {menuItems.map((item, index) => (
+            <li key={index} className="menu-item">
+              <span className="menu-item-name">
+                <button className="menu-add-btn">+</button>
+                {item.name}
+              </span>
+            </li>
+          ))}
+        </ul>
 
-            <img src="/menuheaderdown.png" alt="Flower" className="menuheader down" />
-
-        </>
-    )
+        <img
+          src="/menuheaderdown.png"
+          alt="Flower"
+          className="menuheader down"
+        />
+      </div>
+    </>
+  );
 }
 
-export default Menupage
+export default Menupage;
