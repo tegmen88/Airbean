@@ -1,0 +1,69 @@
+/* Hamburgarikonen */
+.menu-icon {
+  font-size: 30px;
+  cursor: pointer;
+  color: #333;
+  padding: 10px;
+// position: fixed;
+  top: 15px;
+  left: 15px; /* Flytta ikonen till vänstra hörnet */
+  z-index: 1100; /* Ovanpå allt annat */
+}
+
+/* Overlay som täcker hela skärmen */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Täcker hela bredden */
+  height: 100%; /* Täcker hela höjden */
+  background-color: rgba(0, 0, 0, 0.6); /* Halvtransparent svart bakgrund */
+  z-index: 1000; /* Över allt innehåll */
+  display: flex; /* Flexbox för enkel placering */
+  justify-content: center; /* Horisontell centrering */
+  align-items: center; /* Vertikal centrering */
+}
+
+/* Navigationens meny */
+.navbar__menu {
+  list-style: none;
+}
+.navbar {
+  display: flex;
+  flex-direction: column; /* Vertikalt organisera länkarna */
+  gap: 30px; /* Avstånd mellan länkar */
+  text-align: center; /* Centrera länkarna */
+  font-family: "PT Serif", serif; /* Använd PT Serif-typsnittet */
+}
+
+/* Navigationslänkar */
+.navbar__item a {
+  text-decoration: none; /* Ta bort standard-understrykning */
+  color: #fff; /* Vit text */
+  font-size: 24px; /* Gör texten större */
+  font-weight: bold;
+  transition: color 0.3s ease; /* Effekt vid hover */
+
+  /* Centrera texten */
+  display: block;
+  text-align: center;
+}
+
+/* Kort linje mellan länkar */
+.navbar__item {
+  position: relative; /* Behövs för att placera linjen korrekt */
+
+  &::after {
+    content: ""; /* Tom linje */
+    display: block;
+    width: 40px; /* Gör linjen kort */
+    height: 4px; /* Tjocklek på linjen */
+    background: grey; /* Vit färg på linjen */
+    margin: 10px auto 0 auto; /* Placera linjen under länken */
+  }
+}
+
+/* Hover-effekt för länkar */
+.navbar__item a:hover {
+  color: #007bff; /* Ljusblå färg vid hover */
+}

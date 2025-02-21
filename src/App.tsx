@@ -6,7 +6,6 @@ import About from "./comps/About.tsx";
 import Status from "./comps/Status.tsx";
 import Navbar from "./comps/Navbar.tsx";
 import Menupage from "./comps/Menupage.tsx";
-import ProfileAcount from "./comps/ProfileAccount.tsx";
 
 function App() {
 
@@ -19,7 +18,6 @@ function App() {
           <Route path="/" element={<Startpage />} />
           <Route path="/menu" element={<Menupage />} />
           <Route path="/about" element={<About />} />
-          <Route path="/profile" element={<ProfileAcount />} />
           <Route path="/status" element={<Status />} />
 
           <Route path="*" element={<Startpage />} />
