@@ -2,12 +2,11 @@
   position: fixed;
   font-size: 30px;
   cursor: pointer;
-  color: rgb(0, 0, 0); /* Gör ikonen vit */
   padding: 10px;
   top: 15px;
   left: 15px;
   z-index: 1100; /* Ovanpå allt */
-  background-color: #38846d; /* Samma färg som resten av navbaren */
+  background-color: white; /* Samma färg som resten av navbaren */
   border-radius: 5px;
 }
 
@@ -18,7 +17,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #38846d; /* Hela navbaren och overlay är grön */
+  background-color: rgba(0, 0, 0, 0.7); /* Svart med transparens */
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -42,20 +41,42 @@
 .navbar__item a {
   text-decoration: none;
   color: white;
+  font-family: 'PT Serif', serif; /* Ändra till PT Serif */
   font-size: 24px;
-  font-weight: bold;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
   display: block;
   text-align: center;
+  padding: 10px 0; /* Ger luft runt texten */
+  border-bottom: 1px solid white; /* Skapar en linje mellan länkarna */
+  display: inline-block; /* Gör så linjerna fungerar som block under texten */
+
+  position: relative; /* Behövs för pseudo-elementet */
+
 }
 
 .navbar__item a:hover {
-  color: #007bff; 
+  color: white;
+  border-bottom-color: grey;
+
 }
 
 body {
-  padding-top: 70px; 
+  padding-top: 0px;
   background-color: #38846d; 
 }
+
+.cart-icon {
+  position: fixed; /* Placera den i en fast position liknande menu-icon */
+  font-size: 30px; /* Samma storlek som menu-icon */
+  cursor: pointer; /* Klickbar */
+  padding: 10px; /* Marginal runt */
+  top: 15px; /* Placera längst upp med samma avstånd som menu-icon */
+  right: 15px; /* Placera längst till höger */
+  z-index: 1100; /* Samma lager som menu-icon så det visas ovanpå allt */
+  background-color: black; /* Samma bakgrundsfärg som navbaren */
+  border-radius: 5px; /* Rundade kanter */
+  color: white; /* Text-/ikonfärg */
+}
+
 
 

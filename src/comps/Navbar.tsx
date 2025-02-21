@@ -3,13 +3,19 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import '../scss/_navbar.scss';
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+    };
+
+    const toggleCart = () => {
+        setCartOpen(!cartOpen);
     };
 
     return (
@@ -40,6 +46,11 @@ function Navbar() {
                     </nav>
                 </div>
             )}
+
+            {/* Varukorgsikon till höger */}
+            <div className="cart-icon" onClick={toggleCart}>
+                {!cartOpen ? <ShoppingCartIcon/> : <CloseIcon />}
+            </div>
         </>
     );
 }

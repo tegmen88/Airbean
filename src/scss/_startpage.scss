@@ -17,6 +17,8 @@ a.link {
   justify-content: center;
   color: white;
   position: relative; /* Behövs för absolut positionering */
+  overflow: hidden;
+
 
   /* Header-bild vänster och höger */
   .header {
