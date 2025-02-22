@@ -1,8 +1,10 @@
+import "../scss/_aboutpage.scss";
+
 function About() {
   return (
     <>
-      <div className="about-page">
-        <section>
+      <section className="about-page">
+        <article>
           <img src="/menuheaderup.png" alt="Flower" className="menuheader up" />
           <p>Vårt kaffe</p>
           <p>
@@ -25,18 +27,25 @@ function About() {
             affogato viennese cultivar aftertaste, seasonal, percolator cream
             black, galão flavour, milk aromatic turkish skinny crema.
           </p>
-          <section>
-            <img src="/aboutPageImage.png" alt="" />
-            <h3>Eva Cortado</h3>
-            <p>VD & Grundare</p>
+          <section className="hero-section">
+            <figure>
+              <img
+                src="/aboutPageImage.png"
+                alt=""
+                className="aboutPageImage"
+              />
+            </figure>
+
+            <h3 className="hero-name">Eva Cortado</h3>
+            <p className="hero-para">VD & Grundare</p>
           </section>
           <img
             src="/menuheaderdown.png"
             alt="Flower"
             className="menuheader down"
           />
-        </section>
-      </div>
+        </article>
+      </section>
     </>
   );
 }
