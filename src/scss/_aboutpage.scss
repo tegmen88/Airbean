@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.aboutPageImage {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.about-page {
+  width: 100%;
+  background-color: #f3e4e1;
+  position: relative;
+}
+
+.menuheader-up,
+.menuheader-down {
+  height: auto;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.menuheader-up {
+  top: 0;
+}
+
+.menuheader-down {
+  bottom: 0;
+}
+
+.about-page--article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-top: 450px; /* Skapa utrymme för topbilden */
+  padding-bottom: 450px; /* Skapa utrymme för bottombilden */
+}
+.about-page--text {
+  max-width: 800px;
+  font-size: 14px;
+  padding: 0px 2rem;
+}
+
+.about-page--header {
+  font-size: 42px;
+  margin-bottom: 2rem;
+}
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.hero-name {
+  font-size: 22px;
+}
+.hero-para {
+  font-size: 14px;
+}
