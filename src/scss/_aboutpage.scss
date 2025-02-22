@@ -1,27 +1,39 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3e4e1;
+  overflow-x: hidden;
+}
+
+
 .aboutPageImage {
   width: 100px;
   border-radius: 50%;
 }
 
+
 .about-page {
   width: 100%;
   background-color: #f3e4e1;
   position: relative;
+  overflow: hidden;
 }
 
+//blad
 .menuheader-up,
 .menuheader-down {
-  height: auto;
-  object-fit: cover;
+  width: 100%;
+  max-height: 200px; 
+  object-fit: contain; 
   position: absolute;
   left: 0;
-  width: 100%;
+  z-index: 0;
 }
 
 .menuheader-up {
@@ -32,36 +44,81 @@
   bottom: 0;
 }
 
+
 .about-page--article {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding-top: 450px;
-  padding-bottom: 450px;
+  min-height: 100vh;
+  padding: 8rem 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
+
+
 .about-page--text {
   max-width: 800px;
   font-size: 14px;
-  padding: 0px 2rem;
-  font-family: w;
+  padding: 0 2rem;
+  font-family: sans-serif;
+  position: relative;
+  z-index: 2;
 }
+
 
 .about-page--header {
   font-size: 42px;
   margin-bottom: 2rem;
+  font-weight: bold;
 }
+
+/* Profil och namn */
 .hero-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+  position: relative;
+  z-index: 2;
 }
+
 .hero-name {
   font-size: 22px;
+  font-weight: bold;
 }
+
 .hero-para {
   font-size: 14px;
+  color: #555;
+}
+
+
+@media screen and (min-width: 1024px) {
+  html, body {
+    overflow: hidden; 
+    height: 100vh; 
+  }
+  
+  .about-page--article {
+    padding: 6rem 2rem;
+    position: relative;
+    bottom: 10rem;
+  }
+
+  .menuheader-up,
+  .menuheader-down {
+    max-height: 550px; /* Minskar storleken ytterligare på desktop */
+    max-width: 800px;
+    object-fit: contain;
+    position: relative;
+    bottom: 3rem;
+
+  }
+
+  .about-page--text {
+    font-size: 16px;
+  }
 }
