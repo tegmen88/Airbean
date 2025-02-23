@@ -1,34 +1,62 @@
 import "../scss/_menupage.scss";
+import {useEffect, useState} from "react";
+import {fetchMenu, MenuItem} from "../interface/api.ts";
+import AddIcon from '@mui/icons-material/Add'
 
 function Menupage() {
-  const menuItems = [
-    { name: "Bryggkaffe", price: "49 kr", text: "Bryggd på månadens bönor" },
-    { name: "Caffe Doppio", price: "49 kr", text: "Bryggd på månadens bönor" },
-    { name: "Cappuccino", price: "49 kr", text: "Bryggd på månadens bönor" },
-    {
-      name: "Latte Macchiato",
-      price: "49 kr",
-      text: "Bryggd på månadens bönor",
-    },
-    { name: "Kaffe Latte", price: "49 kr", text: "Bryggd på månadens bönor" },
-    { name: "Cortado", price: "39 kr", text: "Bryggd på månadens bönor" },
-  ];
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    async function getMenu(){
+      try {
+
+        const items = await fetchMenu();
+        console.log("API repsonse: ", items);
+        setMenuItems(items);
+
+      } catch (error) {
+        setError((error as Error).message);
+
+        console.error("Error fetching menu:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    getMenu();
+  }, []);
+
+  const addButton = (item: MenuItem) => {
+    console.log("Add button: ", item)
+  }
+
+if (isLoading) return <div>Hämtar menyn...</div>
+if (error) return <div>Ett fel uppstod: {error}</div>;
 
   return (
     <>
+
       <div className="menu-page">
         <img src="/menuheaderup.png" alt="Flower" className="menuheader up" />
 
         <h1>Meny</h1>
+
         <ul className="menu-list">
           {menuItems.map((item, index) => (
-            <li key={index} className="menu-item">
+            <li key={item.id || index} className="menu-item">
               <span className="menu-item-name">
-                <button className="menu-add-btn">+</button>
-                {item.name + " "}
+                <button className="menu-add-btn"
+                  onClick={() => addButton(item)}
+                >
+                  <AddIcon/>
+                </button>
+
+                {item.title + " "}
                 {item.price}
                 <br />
-                {item.text}
+                {item.desc}
               </span>
             </li>
           ))}
