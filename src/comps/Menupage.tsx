@@ -70,7 +70,7 @@ function Menupage({ addToCart }: MenupageProps) {
           <li key={item.id || index} className="menu-item">
             <span className="menu-item-name">
               <button className="menu-add-btn" onClick={() => addButton(item)}>
-                <AddIcon />1
+                <AddIcon />
               </button>
               {item.title + " "}
               {item.price}

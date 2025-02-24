@@ -1,18 +1,109 @@
+// Befintliga stilar (ändras ej, med undantag för bilderna)
 .menuheader {
-  width: 100%; /* Gör så att bilderna täcker hela bredden */
-  display: block; /* Tar bort extra mellanrum som kan skapas av inline-bilder */
+  width: 100vw; /* Fyller hela viewportbredden */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  display: block;
 }
 
 .up {
-  margin-bottom: 10px; /* Valfritt: Lägger till utrymme nedanför den översta bilden */
+  /* Ta bort extra marginaler så att den nuddar övre kanten */
+  margin-top: -20px;  // Kompenserar för .menu-page padding (20px)
+  margin-bottom: 0;
 }
 
 .down {
-  margin-top: 10px; /* Valfritt: Lägger till utrymme ovanför den nedersta bilden */
+  /* Ta bort extra marginaler så att den nuddar nedre kanten */
+  margin-top: 0;
+  margin-bottom: -20px; // Kompenserar för .menu-page padding
 }
 
 body {
-  background-color: #f3e4e1; /* Bakgrundsfärg som täcker hela sidan */
-  margin: 0; /* Tar bort standardmarginalen för att undvika kantproblem */
+  background-color: #f3e4e1;
+  margin: 0;
   padding: 0;
+}
+
+// Variabler
+$menu-font: 'PT Serif', serif;
+$desc-font: 'Work Sans', sans-serif;
+$max-width: 800px;
+
+// Menysidans stilar
+.menu-page {
+  /* Centrerad container för innehållet (exklusive bilderna) */
+  text-align: center;
+  padding: 20px;
+  max-width: 800px;   // Sätt en fast maxbredd
+  margin: 0 auto;     // Centrerar containern horisontellt
+
+  // Rubriken med PT Serif
+  h1 {
+    font-family: $menu-font;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  // Menylistan – centreras i containern
+  .menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center; /* Centrerar ul som helhet */
+  }
+
+  .menu-item {
+    position: relative; /* Nödvändigt för att absolut positionera plusknappen */
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    text-align: left; /* Varje item får vänsterjustering internt */
+  }
+
+  /* .menu-item-name innehåller första raden (plusknapp, titel & pris)
+     samt undertexten (desc) på andra raden. */
+  .menu-item-name {
+    display: block;
+    padding-left: 50px;    /* Säkerställer att både title och desc börjar på samma vertikala linje (plusknappen ligger utanför flödet) */
+    padding-right: 160px;   /* Ökar högerpaddingen för att skjuta priset längre åt höger */
+    line-height: 1.4;
+    font-family: $desc-font; /* Standard: Work Sans för beskrivningen */
+    font-size: 0.9rem;
+  }
+
+  /* Första raden (som innehåller plusknapp, titel och pris) med PT Serif, fetstil */
+  .menu-item-name::first-line {
+    font-family: $menu-font;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  /* Plusknappen: svart, rund med vitt plustecken, absolut placerad */
+  .menu-add-btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  // Global knapp (t.ex. för orderstatus) centreras
+  > button {
+    margin-top: 20px;
+    padding: 8px 16px;
+    font-family: $menu-font;
+    font-size: 1rem;
+    cursor: pointer;
+  }
 }
