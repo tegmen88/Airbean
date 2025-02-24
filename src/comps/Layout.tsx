@@ -1,19 +1,24 @@
 import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
+import { MenuItem } from "../interface/api.ts";
 
-const Layout = () => {
-    return (
-        <>
-            {/* Navbar visas längst upp */}
-            <Navbar />
+interface LayoutProps {
+  orderItems: MenuItem[];
+}
 
-            {/* Spacing för att ge plats under navbar */}
-            <div style={{ paddingTop: "70px" }}>
-                {/* Sidinnehåll renderas här */}
-                <Outlet />
-            </div>
-        </>
-    );
+const Layout = ({ orderItems }: LayoutProps) => {
+  return (
+    <>
+      {/* Navbar visas längst upp */}
+      <Navbar orderItems={orderItems} />
+
+      {/* Spacing för att ge plats under navbar */}
+      <div style={{ paddingTop: "70px" }}>
+        {/* Sidinnehåll renderas här */}
+        <Outlet />
+      </div>
+    </>
+  );
 };
 
 export default Layout;
