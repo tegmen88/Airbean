@@ -1,6 +1,7 @@
 import '../scss/_cart.scss';
 import React, { useState} from "react";
 import { MenuItem, placeOrder, checkOrderStatus } from "../interface/api.ts";
+import {useNavigate} from "react-router-dom";
 
 interface CartProps {
     orderItems: MenuItem[];
@@ -8,6 +9,8 @@ interface CartProps {
 
 const Cart: React.FC<CartProps> = ({ orderItems }) => {
     const [orderNr, setOrderNr] = useState<number | null>(null);
+    const navigate = useNavigate(); // För navigering
+
 
     // Uppdaterad checkout-funktion för att hantera hela varukorgen
     const checkout = async () => {
@@ -28,6 +31,9 @@ const Cart: React.FC<CartProps> = ({ orderItems }) => {
             console.log("Produkter i ordern (JSON):", JSON.stringify(orderItems, null, 2));
 
             setOrderNr(newOrderNr);
+
+            // Skicka användaren till status-sidan med ordernummer
+            navigate("/status", { state: { orderNr: newOrderNr } });
 
         } catch (error) {
             console.error("Error placing order:", error);
