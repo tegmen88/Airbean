@@ -6,6 +6,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "../scss/_navbar.scss";
 import Cart from "./Cart";
 import { MenuItem } from "../interface/api";
+import {Badge} from "@mui/material";
 
 interface NavbarProps {
   orderItems: MenuItem[];
@@ -25,7 +26,13 @@ function Navbar({ orderItems }: NavbarProps) {
     console.log("cart Klick!", !cartOpen);
   };
 
-  return (
+    // Funktion som räknar antalet produkter
+    const getTotalItems = () => {
+        return orderItems.length;
+    };
+
+
+    return (
     <>
       {/* Navigationsikon (hamburgare) */}
       <div className="menu-icon" onClick={toggleMenu}>
@@ -55,11 +62,21 @@ function Navbar({ orderItems }: NavbarProps) {
       )}
 
       {/* Varukorgsikon till höger */}
-      <div className="cart-icon" onClick={toggleCart}>
+{/*      <div className="cart-icon" onClick={toggleCart}>
         {!cartOpen ? <ShoppingCartIcon /> : <CloseIcon />}
-      </div>
+      </div>*/}
 
-      {/* Varukorgen-overlay när den är öppen */}
+        <div className="cart-icon" onClick={toggleCart}>
+            {!cartOpen ? (
+                <Badge badgeContent={getTotalItems()} color="warning">
+                    <ShoppingCartIcon />
+                </Badge>
+            ) : (
+                <CloseIcon />
+            )}
+        </div>
+
+        {/* Varukorgen-overlay när den är öppen */}
       {cartOpen && (
         <div className="cart-overlay" onClick={toggleCart}>
           <div className="cart">
