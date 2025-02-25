@@ -16,7 +16,7 @@ body{
   box-sizing: border-box;
 }
 
-button {
+.status-btn {
   background-color: white;
   color: black;
   border: none;
@@ -28,7 +28,7 @@ button {
   transition: all 0.3s ease;
 }
 
-button:hover {
+.status-btn:hover {
   background-color: black;
   color: white;
   transform: translateY(-2px);

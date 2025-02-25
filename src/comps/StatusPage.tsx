@@ -19,7 +19,7 @@ function StatusPage() {
 
                 <p>antal: minuter</p>
 
-                <button>Ok cool!</button>
+                <button className='status-btn'>Ok cool!</button>
             </div>
 
         </>
