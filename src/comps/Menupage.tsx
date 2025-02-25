@@ -1,11 +1,6 @@
 import "../scss/_menupage.scss";
 import { useEffect, useState } from "react";
-import {
-  fetchMenu,
-  MenuItem,
-  placeOrder,
-  checkOrderStatus,
-} from "../interface/api.ts"; //Infogat placeOrder och checkOrderStatus
+import { fetchMenu, MenuItem } from "../interface/api.ts";
 import AddIcon from "@mui/icons-material/Add";
 
 interface MenupageProps {
@@ -16,7 +11,6 @@ function Menupage({ addToCart }: MenupageProps) {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [orderNr, setOrderNr] = useState<number | null>(null); // Lagt till orderNr
 
   useEffect(() => {
     async function getMenu() {
@@ -35,39 +29,21 @@ function Menupage({ addToCart }: MenupageProps) {
     getMenu();
   }, []);
 
-  const addButton = async (item: MenuItem) => {
+  const addButton = (item: MenuItem) => {
     console.log("Add button: ", item);
-    try {
-      const newOrderNr = await placeOrder(item);
-      console.log("New order number: ", newOrderNr); // Logga ordernumret
-      setOrderNr(newOrderNr);
-      addToCart(item); // Lägg till produkten i varukorgen
-    } catch (error) {
-      console.error("Error placing order:", error);
-    }
-  };
-
-  const checkStatus = async () => {
-    if (orderNr) {
-      try {
-        const status = await checkOrderStatus(orderNr);
-        console.log("Order status: ", status);
-      } catch (error) {
-        console.error("Error checking order status:", error);
-      }
-    }
+    addToCart(item); // Lägg till produkten i varukorgen
   };
 
   if (isLoading) return <div>Hämtar menyn...</div>;
   if (error) return <div>Ett fel uppstod: {error}</div>;
 
   return (
-    <div className="menu-page">
-      <img src="/menuheaderup.png" alt="Flower" className="menuheader up" />
-      <h1>Meny</h1>
-      <ul className="menu-list">
-        {menuItems.map((item, index) => (
-          <li key={item.id || index} className="menu-item">
+      <div className="menu-page">
+        <img src="/menuheaderup.png" alt="Flower" className="menuheader up" />
+        <h1>Meny</h1>
+        <ul className="menu-list">
+          {menuItems.map((item, index) => (
+              <li key={item.id || index} className="menu-item">
             <span className="menu-item-name">
               <button className="menu-add-btn" onClick={() => addButton(item)}>
                 <AddIcon />
@@ -77,14 +53,11 @@ function Menupage({ addToCart }: MenupageProps) {
               <br />
               {item.desc}
             </span>
-          </li>
-        ))}
-      </ul>
-      <img src="/menuheaderdown.png" alt="Flower" className="menuheader down" />
-      {orderNr && (
-        <button onClick={checkStatus}>Kontrollera orderstatus</button>
-      )}
-    </div>
+              </li>
+          ))}
+        </ul>
+        <img src="/menuheaderdown.png" alt="Flower" className="menuheader down" />
+      </div>
   );
 }
 

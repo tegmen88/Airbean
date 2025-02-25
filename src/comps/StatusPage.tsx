@@ -1,6 +1,8 @@
 
 
-function Status() {
+
+function StatusPage() {
+
 
     return (
         <>
@@ -11,4 +13,4 @@ function Status() {
     )
 }
 
-export default Status
+export default StatusPage

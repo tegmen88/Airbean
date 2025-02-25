@@ -2,7 +2,7 @@
 export interface MenuItem {
   id: string;
   title: string;
-  desc: string;
+  desc?: string;
   price: number;
 }
 const BASE_URL = "https://airbean-9pcyw.ondigitalocean.app";
@@ -29,37 +29,7 @@ export const fetchMenu = async (): Promise<MenuItem[]> => {
     return []; // Returnera en tom array vid fel för att förhindra krasch
   }
 };
-export const placeOrder = async (item: MenuItem): Promise<number> => {
-  try {
-    const orderPayload = {
-      details: {
-        order: [
-          {
-            name: item.title,
-            price: item.price,
-          },
-        ],
-      },
-    };
 
-    console.log("Placing order with payload:", orderPayload); // Logga objektet
-    const response = await fetch(`${BASE_URL}/api/beans/order`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(orderPayload),
-    });
-    if (!response.ok) {
-      throw new Error(`Failed to place order: ${response.status}`);
-    }
-    const data = await response.json();
-    return data.orderNr;
-  } catch (error) {
-    console.error("Error placing order:", error);
-    throw error;
-  }
-};
 
 export const checkOrderStatus = async (orderNr: number): Promise<string> => {
   try {
@@ -75,4 +45,36 @@ export const checkOrderStatus = async (orderNr: number): Promise<string> => {
     console.error("Error checking order status:", error);
     throw error;
   }
+};
+
+
+
+
+
+
+
+export const placeOrder = async (items: MenuItem[]): Promise<number> => {
+  const orderPayload = {
+    details: {
+      order: items.map((item) => ({
+        name: item.title,
+        price: item.price,
+      })),
+    },
+  };
+
+  const response = await fetch(`${BASE_URL}/api/beans/order`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(orderPayload),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Order kunde inte skickas: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.orderNr;
 };
