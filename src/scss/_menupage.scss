@@ -7,6 +7,8 @@
   margin-left: -50vw;
   margin-right: -50vw;
   display: block;
+  background-size: cover;  // Skalning så att bakgrunden anpassar sig
+  background-position: center top; // Justerar bildens position
 }
 
 .up {
@@ -21,7 +23,9 @@
   margin-bottom: -20px; // Kompenserar för .menu-page padding
 }
 
-body {
+html, body {
+  height: 100%; // Ser till att sidan fyller hela höjden
+  overflow-y: auto; // Tillåter scroll om innehållet är längre än skärmen
   background-color: #f3e4e1;
   margin: 0;
   padding: 0;
@@ -37,8 +41,10 @@ $max-width: 800px;
   /* Centrerad container för innehållet (exklusive bilderna) */
   text-align: center;
   padding: 20px;
-  max-width: 800px;   // Sätt en fast maxbredd
+  max-width: 800px;   // Sätt en fast maxbredd för mobil
   margin: 0 auto;     // Centrerar containern horisontellt
+  min-height: 100vh; // Gör att sidan alltid tar minst hela skärmens höjd
+  overflow-y: auto;  // Ser till att scroll fungerar
 
   // Rubriken med PT Serif
   h1 {
@@ -105,5 +111,69 @@ $max-width: 800px;
     font-family: $menu-font;
     font-size: 1rem;
     cursor: pointer;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .menu-page {
+    max-width: 1000px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menuheader {
+    width: 750px;
+    height: 200px;
+    margin: 0 auto;
+    position: relative;
+    left: 0rem;
+  }
+
+  .up {
+    margin-top: -20px;  
+    margin-bottom: 0; 
+  }
+  
+  .down {
+    
+    margin-top: 0;
+    margin-bottom: -20px; 
+  }
+
+  .menu-list {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px; 
+    padding: 20px;
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    left: 4rem;
+  }
+
+  .menu-item {
+    width: 45%; 
+    max-width: 400px;
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .menu-item-name {
+    padding-left: 40px; 
+    padding-right: 120px;
+    font-size: 1rem;
+  }
+
+  .menu-item-name::first-line {
+    font-size: 1.3rem; 
+  }
+
+  .menu-add-btn {
+    width: 35px;
+    height: 35px;
   }
 }

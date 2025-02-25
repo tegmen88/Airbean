@@ -71,26 +71,49 @@
 @media screen and (min-width: 1024px) {
   html,
   body {
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: auto;
     height: 100vh;
   }
 
   .about-page--article {
     padding: 6rem 2rem;
     position: relative;
-    bottom: 10rem;
+    bottom: 5rem;
   }
 
   .menuheader-up,
   .menuheader-down {
-    max-height: 550px; /* Minskar storleken ytterligare på desktop */
+    max-height: 750px; /* Minskar storleken ytterligare på desktop */
     max-width: 800px;
     object-fit: contain;
     position: relative;
-    bottom: 3rem;
+    top: 5rem;
   }
 
   .about-page--text {
     font-size: 16px;
+    position: relative;
+    top: 4rem;
   }
+
+
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    position: relative;
+    top: 5rem;
+  }
+
+  .about-page--header {
+    font-size: 42px;
+    margin-bottom: 2rem;
+    position: relative;
+    top: 5rem;
+  }
+
+  
 }
