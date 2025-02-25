@@ -1,3 +1,4 @@
+import '../scss/_cart.scss';
 import React, { useState} from "react";
 import { MenuItem, placeOrder, checkOrderStatus } from "../interface/api.ts";
 
@@ -53,7 +54,10 @@ const Cart: React.FC<CartProps> = ({ orderItems }) => {
         console.log("Varukorgen är nu tömd!");
     };
 
+    // Beräkna totalbelopp
+    const totalAmount = orderItems.reduce((total, item) => total + item.price, 0);
 
+    // Beräkna totalbelopp
     if (!orderItems || orderItems.length === 0) {
         return (
             <div className="cart">
@@ -71,8 +75,11 @@ const Cart: React.FC<CartProps> = ({ orderItems }) => {
                     <li key={index}>
                         {item.title} - {item.price} kr
                     </li>
+
                 ))}
             </ul>
+
+            <h2>Total: {totalAmount} kr</h2>
 
             <button onClick={emptyCart}>Töm varukorgen!</button>
             <button onClick={checkout}>Take my money!!</button>
