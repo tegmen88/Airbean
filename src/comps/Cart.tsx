@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { MenuItem, placeOrder, checkOrderStatus } from "../interface/api.ts";
 
 interface CartProps {
@@ -24,8 +24,10 @@ const Cart: React.FC<CartProps> = ({ orderItems }) => {
                 console.log(`${index + 1}. ${item.title} - ${item.desc} (Pris: ${item.price} kr)`);
             });
 
+            console.log("Produkter i ordern (JSON):", JSON.stringify(orderItems, null, 2));
 
             setOrderNr(newOrderNr);
+
         } catch (error) {
             console.error("Error placing order:", error);
             alert("Något gick fel vid beställning. Försök igen!");
@@ -47,6 +49,11 @@ const Cart: React.FC<CartProps> = ({ orderItems }) => {
         }
     };
 
+    const emptyCart = () => {
+        console.log("Varukorgen är nu tömd!");
+    };
+
+
     if (!orderItems || orderItems.length === 0) {
         return (
             <div className="cart">
@@ -67,7 +74,7 @@ const Cart: React.FC<CartProps> = ({ orderItems }) => {
                 ))}
             </ul>
 
-            <button>Töm varukorgen!</button>
+            <button onClick={emptyCart}>Töm varukorgen!</button>
             <button onClick={checkout}>Take my money!!</button>
 
             {/* Visa kontrollknapp för orderstatus om en ordernummer finns */}
