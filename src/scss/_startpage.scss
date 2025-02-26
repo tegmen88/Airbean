@@ -29,6 +29,7 @@ a.link {
     &.left {
       top: 0; /* Placeras högt upp */
       left: 0; /* Placeras vid vänsterkanten */
+	transform: scale(-1); /*spegelvänd*/
     }
 
     &.right {
