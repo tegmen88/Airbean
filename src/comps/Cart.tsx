@@ -3,19 +3,21 @@ import React, { useState } from "react";
 import { MenuItem, placeOrder, checkOrderStatus } from "../interface/api.ts";
 import { useNavigate } from "react-router-dom";
 
+// Definierar props för Cart-komponenten
 interface CartProps {
-  orderItems: MenuItem[];
-  setOrderItems: React.Dispatch<React.SetStateAction<MenuItem[]>>;
+  orderItems: MenuItem[]; // Lista över produkter i varukorgen
+  setOrderItems: React.Dispatch<React.SetStateAction<MenuItem[]>>; // Lista över produkter i varukorgen
 }
 
+// Cart-komponenten hanterar varukorgen och beställningsflödet
 const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
-  const [orderNr, setOrderNr] = useState<number | null>(null);
+  const [orderNr, setOrderNr] = useState<number | null>(null); // Sparar ordernumret efter beställning
   const navigate = useNavigate(); // För navigering
 
   // Uppdaterad checkout-funktion för att hantera hela varukorgen
   const checkout = async () => {
     if (orderItems.length === 0) {
-      alert("Din varukorg är tom!");
+      alert("Din varukorg är tom!"); // Meddelande om varukorgen är tom
       return;
     }
     try {
@@ -25,6 +27,7 @@ const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
 
       console.log("Produkter i ordern:");
       orderItems.forEach((item, index) => {
+        // Loggar detaljer om beställningen
         console.log(
           `${index + 1}. ${item.title} - ${item.desc} (Pris: ${item.price} kr)`
         );
@@ -35,7 +38,7 @@ const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
         JSON.stringify(orderItems, null, 2)
       );
 
-      setOrderNr(newOrderNr);
+      setOrderNr(newOrderNr); // Sparar ordernumret
 
       // Skicka användaren till status-sidan med ordernummer
       navigate("/status", { state: { orderNr: newOrderNr } });
@@ -60,6 +63,7 @@ const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
     }
   };
 
+  // funktion för att tömma varukorg
   const emptyCart = () => {
     setOrderItems([]);
     console.log("Varukorgen är nu tömd!");
@@ -82,6 +86,7 @@ const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
     <div className="cart">
       <h2>Din beställning</h2>
       <ul>
+        {/* Loopar igenom varukorgen och visar varje produkt */}
         {orderItems.map((item, index) => (
           <li key={index}>
             {item.title} - {item.price} kr
@@ -91,6 +96,7 @@ const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
 
       <h2>Total: {totalAmount} kr</h2>
 
+      {/* Knappar för att hantera varukorgen och beställningen */}
       <button onClick={emptyCart}>Töm varukorgen!</button>
       <button onClick={checkout}>Take my money!!</button>
 
