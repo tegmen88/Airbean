@@ -1,4 +1,4 @@
-import './App.css';
+import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import Startpage from "./comps/Startpage.tsx";
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar orderItems={orderItems} />
+      <Navbar orderItems={orderItems} setOrderItems={setOrderItems} />
       <Routes>
         <Route path="/" element={<Startpage />} />
         <Route path="/menu" element={<Menupage addToCart={addToCart} />} />

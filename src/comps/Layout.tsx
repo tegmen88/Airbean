@@ -4,13 +4,14 @@ import { MenuItem } from "../interface/api.ts";
 
 interface LayoutProps {
   orderItems: MenuItem[];
+  setOrderItems: React.Dispatch<React.SetStateAction<MenuItem[]>>;
 }
 
-const Layout = ({ orderItems }: LayoutProps) => {
+const Layout = ({ orderItems, setOrderItems }: LayoutProps) => {
   return (
     <>
       {/* Navbar visas längst upp */}
-      <Navbar orderItems={orderItems} />
+      <Navbar orderItems={orderItems} setOrderItems={setOrderItems} />
 
       {/* Spacing för att ge plats under navbar */}
       <div style={{ paddingTop: "70px" }}>

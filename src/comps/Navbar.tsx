@@ -6,13 +6,14 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import "../scss/_navbar.scss";
 import Cart from "./Cart";
 import { MenuItem } from "../interface/api";
-import {Badge} from "@mui/material";
+import { Badge } from "@mui/material";
 
 interface NavbarProps {
   orderItems: MenuItem[];
+  setOrderItems: React.Dispatch<React.SetStateAction<MenuItem[]>>;
 }
 
-function Navbar({ orderItems }: NavbarProps) {
+function Navbar({ orderItems, setOrderItems }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
 
@@ -26,13 +27,12 @@ function Navbar({ orderItems }: NavbarProps) {
     console.log("cart Klick!", !cartOpen);
   };
 
-    // Funktion som räknar antalet produkter
-    const getTotalItems = () => {
-        return orderItems.length;
-    };
+  // Funktion som räknar antalet produkter
+  const getTotalItems = () => {
+    return orderItems.length;
+  };
 
-
-    return (
+  return (
     <>
       {/* Navigationsikon (hamburgare) */}
       <div className="menu-icon" onClick={toggleMenu}>
@@ -62,25 +62,25 @@ function Navbar({ orderItems }: NavbarProps) {
       )}
 
       {/* Varukorgsikon till höger */}
-{/*      <div className="cart-icon" onClick={toggleCart}>
+      {/*      <div className="cart-icon" onClick={toggleCart}>
         {!cartOpen ? <ShoppingCartIcon /> : <CloseIcon />}
       </div>*/}
 
-        <div className="cart-icon" onClick={toggleCart}>
-            {!cartOpen ? (
-                <Badge badgeContent={getTotalItems()} color="warning">
-                    <ShoppingCartIcon />
-                </Badge>
-            ) : (
-                <CloseIcon />
-            )}
-        </div>
+      <div className="cart-icon" onClick={toggleCart}>
+        {!cartOpen ? (
+          <Badge badgeContent={getTotalItems()} color="warning">
+            <ShoppingCartIcon />
+          </Badge>
+        ) : (
+          <CloseIcon />
+        )}
+      </div>
 
-        {/* Varukorgen-overlay när den är öppen */}
+      {/* Varukorgen-overlay när den är öppen */}
       {cartOpen && (
         <div className="cart-overlay" onClick={toggleCart}>
           <div className="cart">
-            <Cart orderItems={orderItems} />
+            <Cart orderItems={orderItems} setOrderItems={setOrderItems} />
           </div>
         </div>
       )}
