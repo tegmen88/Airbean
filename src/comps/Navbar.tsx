@@ -8,20 +8,25 @@ import Cart from "./Cart";
 import { MenuItem } from "../interface/api";
 import { Badge } from "@mui/material";
 
+// Definierar props för Navbar-komponenten
 interface NavbarProps {
-  orderItems: MenuItem[];
-  setOrderItems: React.Dispatch<React.SetStateAction<MenuItem[]>>;
+  orderItems: MenuItem[]; // En lista med produkter i varukorgen
+  setOrderItems: React.Dispatch<React.SetStateAction<MenuItem[]>>; // Funktion för att uppdatera varukorgen
 }
 
+// tar emot orderItems och setOrderItems som props från App.tsx
 function Navbar({ orderItems, setOrderItems }: NavbarProps) {
+  // states för hantera menu och cart
   const [menuOpen, setMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
 
+  // funktion för toggla menu
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
     console.log("menu Klick!", !menuOpen);
   };
 
+  // funktion för toggla cart
   const toggleCart = () => {
     setCartOpen(!cartOpen);
     console.log("cart Klick!", !cartOpen);
@@ -80,6 +85,7 @@ function Navbar({ orderItems, setOrderItems }: NavbarProps) {
       {cartOpen && (
         <div className="cart-overlay" onClick={toggleCart}>
           <div className="cart">
+            {/* Skickar ner props till cart */}
             <Cart orderItems={orderItems} setOrderItems={setOrderItems} />
           </div>
         </div>
