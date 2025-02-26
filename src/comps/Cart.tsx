@@ -1,46 +1,54 @@
 import "../scss/_cart.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MenuItem, placeOrder, checkOrderStatus } from "../interface/api.ts";
 import { useNavigate } from "react-router-dom";
 
-// Definierar props för Cart-komponenten
 interface CartProps {
-  orderItems: MenuItem[]; // Lista över produkter i varukorgen
-  setOrderItems: React.Dispatch<React.SetStateAction<MenuItem[]>>; // Lista över produkter i varukorgen
+  orderItems: MenuItem[];
+  setOrderItems: React.Dispatch<React.SetStateAction<MenuItem[]>>;
 }
 
-// Cart-komponenten hanterar varukorgen och beställningsflödet
 const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
-  const [orderNr, setOrderNr] = useState<number | null>(null); // Sparar ordernumret efter beställning
-  const navigate = useNavigate(); // För navigering
+  const [orderNr, setOrderNr] = useState<number | null>(null);
+  const [discountApplied, setDiscountApplied] = useState(false);
+  const navigate = useNavigate();
 
-  // Uppdaterad checkout-funktion för att hantera hela varukorgen
+  useEffect(() => {
+    console.log("Varukorgens innehåll:", orderItems);
+
+    const hasBryggkaffe = orderItems.some((item) => item.title.includes("Bryggkaffe"));
+    const hasGustav = orderItems.some((item) => item.title.includes("Gustav"));
+
+    console.log("Har Bryggkaffe?", hasBryggkaffe);
+    console.log("Har Gustav?", hasGustav);
+
+    if (hasBryggkaffe && hasGustav) {
+      setDiscountApplied(true);
+    } else {
+      setDiscountApplied(false);
+    }
+  }, [orderItems]);
+
+  const calculateTotal = () => {
+    let total = orderItems.reduce((sum, item) => sum + item.price, 0);
+    
+    if (discountApplied) {
+      total -= 49;
+    }
+
+    return total;
+  };
+
   const checkout = async () => {
     if (orderItems.length === 0) {
-      alert("Din varukorg är tom!"); // Meddelande om varukorgen är tom
+      alert("Din varukorg är tom!");
       return;
     }
     try {
-      const newOrderNr = await placeOrder(orderItems); // Skickar alla varor
-      console.log("New order number: ", newOrderNr);
-      console.log("Produkter i ordern:", orderItems);
+      const newOrderNr = await placeOrder(orderItems);
 
-      console.log("Produkter i ordern:");
-      orderItems.forEach((item, index) => {
-        // Loggar detaljer om beställningen
-        console.log(
-          `${index + 1}. ${item.title} - ${item.desc} (Pris: ${item.price} kr)`
-        );
-      });
-
-      console.log(
-        "Produkter i ordern (JSON):",
-        JSON.stringify(orderItems, null, 2)
-      );
-
-      setOrderNr(newOrderNr); // Sparar ordernumret
-
-      // Skicka användaren till status-sidan med ordernummer
+      console.log("Order skickad! Ordernummer:", newOrderNr);
+      setOrderNr(newOrderNr);
       navigate("/status", { state: { orderNr: newOrderNr } });
     } catch (error) {
       console.error("Error placing order:", error);
@@ -48,7 +56,7 @@ const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
     }
   };
 
-  // Funktion för att kontrollera orderstatus
+  //  Lägg tillbaka funktionen för att kolla orderstatus
   const checkStatus = async () => {
     if (!orderNr) {
       alert("Inget ordernummer finns. Gör en beställning först!");
@@ -60,6 +68,7 @@ const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
       alert(`Din orderstatus: ${status}`);
     } catch (error) {
       console.error("Error checking order status:", error);
+      alert("Kunde inte hämta orderstatus, försök igen.");
     }
   };
 
@@ -68,10 +77,7 @@ const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
     setOrderItems([]);
     console.log("Varukorgen är nu tömd!");
   };
-
-  // Beräkna totalbelopp
-  const totalAmount = orderItems.reduce((total, item) => total + item.price, 0);
-
+    
   // Beräkna totalbelopp
   if (!orderItems || orderItems.length === 0) {
     return (
@@ -94,13 +100,19 @@ const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
         ))}
       </ul>
 
-      <h2>Total: {totalAmount} kr</h2>
+      {discountApplied && (
+        <p style={{ color: "red", fontWeight: "bold" }}>
+            Kampanjrabatt: -49 kr 
+        </p>
+      )}
+
+      <h2>Total: {calculateTotal()} kr</h2>
 
       {/* Knappar för att hantera varukorgen och beställningen */}
       <button onClick={emptyCart}>Töm varukorgen!</button>
       <button onClick={checkout}>Take my money!!</button>
 
-      {/* Visa kontrollknapp för orderstatus om en ordernummer finns */}
+      {/* 🔍 Lägg tillbaka knappen för att kontrollera orderstatus */}
       {orderNr && (
         <button onClick={checkStatus}>Kontrollera orderstatus</button>
       )}
