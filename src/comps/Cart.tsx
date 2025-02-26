@@ -2,6 +2,8 @@ import "../scss/_cart.scss";
 import React, { useState, useEffect } from "react";
 import { MenuItem, placeOrder, checkOrderStatus } from "../interface/api.ts";
 import { useNavigate } from "react-router-dom";
+import { IconButton } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 interface CartProps {
   orderItems: MenuItem[];
@@ -72,6 +74,13 @@ const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
     }
   };
 
+  // funktion för att ta bort
+  const removeItem = (indexToRemove: number) => {
+    const updatedItems = orderItems.filter((_, index) => index !== indexToRemove);
+    setOrderItems(updatedItems);
+    console.log(`Produkt med index ${indexToRemove} togs bort.`);
+  };
+
   // funktion för att tömma varukorg
   const emptyCart = () => {
     setOrderItems([]);
@@ -96,6 +105,15 @@ const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
         {orderItems.map((item, index) => (
           <li key={index}>
             {item.title} - {item.price} kr
+            <IconButton
+                onClick={() => removeItem(index)}
+                aria-label="ta bort produkt"
+                color="error"
+                size="small"
+
+            >
+              <DeleteIcon />
+            </IconButton>
           </li>
         ))}
       </ul>

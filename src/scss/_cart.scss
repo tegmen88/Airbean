@@ -2,9 +2,9 @@
   background-color: white; // Vit bakgrund
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Liten skugga för synlighet
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 500px;
-  margin: 0 auto; // Centrera cart’en på sidan
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -26,7 +26,7 @@
   padding-bottom: 0.5rem;
 }
 
-.cart button {
+.cart > button {
   background-color: #2F2926;
   color: white;
   border-radius: 50px;
@@ -35,7 +35,6 @@
   font-size: 1rem;
   margin: 0.5rem;
   font-family: 'PT Serif', serif;
-
 }
 
 .cart button:hover {
