@@ -119,7 +119,7 @@ const Cart: React.FC<CartProps> = ({ orderItems, setOrderItems }) => {
       </ul>
 
       {discountApplied && (
-        <p style={{ color: "red", fontWeight: "bold" }}>
+        <p className="campaign">
             Kampanjrabatt: -49 kr 
         </p>
       )}
